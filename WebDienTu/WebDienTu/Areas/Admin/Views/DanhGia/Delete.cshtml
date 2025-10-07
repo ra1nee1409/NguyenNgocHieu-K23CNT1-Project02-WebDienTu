@@ -1,0 +1,48 @@
+﻿@model WebDienTu.Models.DanhGia
+
+@{
+    ViewData["Title"] = "Xóa đánh giá";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="mb-4 text-danger">Xóa đánh giá</h2>
+
+<div class="alert alert-warning">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    Bạn có chắc chắn muốn <strong>xóa</strong> đánh giá này không?
+</div>
+
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3 fw-bold">Số sao</dt>
+            <dd class="col-sm-9">@Model.SoSao</dd>
+
+            <dt class="col-sm-3 fw-bold">Bình luận</dt>
+            <dd class="col-sm-9">@Model.BinhLuan</dd>
+
+            <dt class="col-sm-3 fw-bold">Ngày đánh giá</dt>
+            <dd class="col-sm-9">@Model.NgayDanhGia?.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3 fw-bold">Người dùng</dt>
+            <dd class="col-sm-9">
+                @Model.MaNguoiDungNavigation?.HoTen (@Model.MaNguoiDungNavigation?.Email)
+            </dd>
+
+            <dt class="col-sm-3 fw-bold">Sản phẩm</dt>
+            <dd class="col-sm-9">
+                @Model.MaSanPhamNavigation?.TenSanPham
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" class="d-flex justify-content-between">
+    <input type="hidden" asp-for="MaDanhGia" />
+    <a asp-action="Index" class="btn btn-secondary">
+        ⬅ Quay lại
+    </a>
+    <button type="submit" class="btn btn-danger">
+        <i class="bi bi-trash"></i> Xóa
+    </button>
+</form>

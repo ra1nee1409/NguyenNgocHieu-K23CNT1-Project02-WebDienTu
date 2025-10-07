@@ -1,0 +1,73 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\models\\quantrivien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\models\\quantrivien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\models\\dientustorecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\models\\dientustorecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "QuanTriVien.cs",
+              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\QuanTriVien.cs",
+              "RelativeDocumentMoniker": "WebDienTu\\Models\\QuanTriVien.cs",
+              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\QuanTriVien.cs",
+              "RelativeToolTip": "WebDienTu\\Models\\QuanTriVien.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T01:32:17.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SanPham.cs",
+              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\SanPham.cs",
+              "RelativeDocumentMoniker": "WebDienTu\\Models\\SanPham.cs",
+              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\SanPham.cs",
+              "RelativeToolTip": "WebDienTu\\Models\\SanPham.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAowCUAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T01:31:44.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DienTuStoreContext.cs",
+              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\DienTuStoreContext.cs",
+              "RelativeDocumentMoniker": "WebDienTu\\Models\\DienTuStoreContext.cs",
+              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\DienTuStoreContext.cs",
+              "RelativeToolTip": "WebDienTu\\Models\\DienTuStoreContext.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAWwE8AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T01:29:31.657Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

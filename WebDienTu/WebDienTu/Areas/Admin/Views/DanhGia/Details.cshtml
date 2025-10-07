@@ -1,0 +1,40 @@
+﻿@model WebDienTu.Models.DanhGia
+
+@{
+    ViewData["Title"] = "Chi tiết đánh giá";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="mb-4 text-primary">Chi tiết đánh giá</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3 fw-bold">Số sao</dt>
+            <dd class="col-sm-9">@Model.SoSao</dd>
+
+            <dt class="col-sm-3 fw-bold">Bình luận</dt>
+            <dd class="col-sm-9">@Model.BinhLuan</dd>
+
+            <dt class="col-sm-3 fw-bold">Ngày đánh giá</dt>
+            <dd class="col-sm-9">@Model.NgayDanhGia?.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3 fw-bold">Người dùng</dt>
+            <dd class="col-sm-9">
+                @Model.MaNguoiDungNavigation?.HoTen (@Model.MaNguoiDungNavigation?.Email)
+            </dd>
+
+            <dt class="col-sm-3 fw-bold">Sản phẩm</dt>
+            <dd class="col-sm-9">
+                @Model.MaSanPhamNavigation?.TenSanPham
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3 d-flex justify-content-between">
+    <a asp-action="Index" class="btn btn-secondary">⬅ Quay lại</a>
+    <a asp-action="Edit" asp-route-id="@Model.MaDanhGia" class="btn btn-warning">
+        ✏ Sửa
+    </a>
+</div>

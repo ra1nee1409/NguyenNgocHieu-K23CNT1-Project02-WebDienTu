@@ -1,0 +1,327 @@
+﻿@model IEnumerable<WebDienTu.Models.SanPham>
+
+
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+@{
+    var currentUserId = ViewBag.MaNguoiDung ?? 0;
+}
+<link rel="stylesheet" href="~/css/home.css" />
+
+<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+
+<!-- Banner -->
+<partial name="_BannerNavUsers" />
+
+<!-- Container popup ở giữa màn hình -->
+<!-- Popup giữa màn hình -->
+<!-- Overlay -->
+<div id="popupOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.5); z-index:1040;"></div>
+
+<!-- Popup thiết kế thông báo đăng nhập đăng xuất cảnh bảo -->
+<div id="popupNotification" style="display:none; position:fixed; top:40%; left:40%;
+    transform:translate(-50%, -50%) scale(0); background-color:white; border-radius:12px;
+    padding:20px; box-shadow:0 5px 15px rgba(0,0,0,0.3); z-index:1050; text-align:center;
+    width:280px; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    transition: transform 0.3s ease, opacity 0.3s ease; opacity:0;" >
+
+    <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px">
+    </lord-icon>
+
+    <div id="popupTitle" style="margin-top:10px; font-weight:700; font-size:1.1rem;"></div>
+    <div id="popupMessage" style="margin-top:5px; font-size:0.95rem; color:#333;"></div>
+
+    <button id="popupOkBtn" style="margin-top:15px; padding:5px 15px; border:none; border-radius:5px;
+            background-color:#0ab39c; color:white; cursor:pointer;">
+        OK
+    </button>
+</div>
+
+
+<div id="daXemContainer">
+    <!-- Nội dung sẽ load từ Ajax  (Tạm thới chưa làm)-->
+</div>
+
+@* thanh phần loại (kết hợp AJAX)*@
+<ul class="nav nav-pills mb-3" id="LoaiFilterNav">
+    <li class="nav-item"><a class="nav-link active" href="#" data-madm="">Tất cả</a></li>
+    @foreach (var dm in (List<WebDienTu.Models.DanhMuc>)ViewBag.DanhMucs)
+    {
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-madm="@dm.MaDanhMuc">@dm.TenDanhMuc</a>
+        </li>
+    }
+</ul>
+
+@* Gọi các sản phẩm từ trang _SanPhamList (kết hợp AJAX)*@
+<div id="SanPhamList">
+    @await Html.PartialAsync("_SanPhamList", Model)
+</div>
+
+<!-- Gọi trang Hot Keywords để hiển thị   (kết hợp AJAX)-->
+@if (ViewBag.HotKeywords != null && ((List<string>)ViewBag.HotKeywords).Any())
+{
+    @await Html.PartialAsync("_HotKeywords", (List<string>)ViewBag.HotKeywords)
+}
+
+@* <!-- Danh sách sản phẩm -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 rounded-3 position-relative">
+
+                <!-- Badge giảm giá -->
+                @if (item.GiaBan.HasValue && item.GiaBan.Value < item.Gia)
+                {
+                    <span class="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 rounded-bottom small">
+                        <i class="fa-solid fa-tag me-1"></i>
+                        Giảm @((1 - item.GiaBan.Value / item.Gia) * 100).ToString("0")%
+                    </span>
+                }
+
+                <!-- Ảnh sản phẩm -->
+                <img src="@item.HinhAnh" class="card-img-top" alt="@item.TenSanPham"
+                     style="height:200px; object-fit:cover; border-radius: .5rem .5rem 0 0;" />
+
+                <!-- Thông tin -->
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title text-truncate" title="@item.TenSanPham">@item.TenSanPham</h6>
+                    <p class="card-text text-muted small text-truncate" title="@item.MoTa">@item.MoTa</p>
+
+
+                    <!-- Giá + hành động -->
+                    <div class="mt-auto">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-bold text-primary">
+                                @((item.GiaBan ?? item.Gia).ToString("N0")) VNĐ
+                            </span>
+                        </div>
+
+                        <!-- Hiển thị sao -->
+                        @if (item.DanhGia != null && item.DanhGia.Any())
+                        {
+                            var avgStars = item.DanhGia.Average(d => d.SoSao ?? 0);
+                            <div class="mb-2 ms-0">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= avgStars)
+                                    {
+                                        <i class="fa-solid fa-star text-warning me-1"></i>
+                                    }
+                                    else
+                                    {   
+                                        <i class="fa-regular fa-star text-warning me-1"></i>
+                                    }
+                                }
+                                <small class="text-muted">(@item.DanhGia.Count())</small>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="mb-2 text-muted small ms-1">
+                                Chưa có đánh giá
+                            </div>
+                        }
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@item.MaSanPham"
+                               class="btn btn-sm btn-outline-primary">
+                                <i class="fa-solid fa-eye me-1"></i> Xem
+                            </a>
+                            <a asp-controller="DonHang" asp-action="ThanhToan" asp-route-id="@item.MaSanPham"
+                               class="btn btn-sm btn-outline-success">
+                                <i class="fa-solid fa-cart-shopping me-1"></i> Mua
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+
+                <!-- Footer với icon -->
+                <div class="card-footer d-flex justify-content-around border-0 bg-white">
+                    <!-- Thêm vào giỏ hàng -->
+                    <form asp-controller="GioHang" asp-action="AddToCart" method="post" class="d-inline">
+                        <input type="hidden" name="sanPhamId" value="@item.MaSanPham" />
+                        <input type="hidden" name="quantity" value="1" /> <!-- số lượng mặc định -->
+                        <button type="submit" class="btn btn-sm btn-outline-success" title="Thêm vào giỏ">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </form>
+
+                    <!-- Yêu thích -->
+                    <button class="btn btn-sm btn-outline-danger" title="Yêu thích">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    }
+</div> *@
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            // ========================
+            // Hiển thị popup thông báo
+            // ========================
+            var successMsg = @Html.Raw(Json.Serialize(TempData["SuccessMessage"]));
+            var warningMsg = @Html.Raw(Json.Serialize(TempData["Warning"]));
+
+            function showPopup(title, message, iconUrl) {
+                if (!message) return;
+
+                $("#popupTitle").text(title);
+                $("#popupMessage").text(message);
+                $("#popupIcon").attr("src", iconUrl);
+
+                $("#popupOverlay").fadeIn(200);
+                $("#popupNotification").css({ display: 'flex', opacity: 0, transform: 'scale(0)' })
+                    .animate({ opacity: 1 }, 300);
+                $("#popupNotification").css('transform', 'scale(1)');
+
+                var autoHide = setTimeout(hidePopup, 8000);
+
+                $("#popupOkBtn").off("click").on("click", function () {
+                    clearTimeout(autoHide);
+                    hidePopup();
+                });
+
+                function hidePopup() {
+                    $("#popupNotification").animate({ opacity: 0 }, 300, function () {
+                        $(this).css('display', 'none').css('transform', 'scale(0)');
+                    });
+                    $("#popupOverlay").fadeOut(200);
+                }
+            }
+
+            if (successMsg) {
+                showPopup("Thành công!", successMsg, "https://cdn.lordicon.com/lupuorrc.json");
+            } else if (warningMsg) {
+                showPopup("Cảnh báo!", warningMsg, "https://cdn.lordicon.com/tdrtiskw.json");
+            }
+
+            // ========================
+            // Ajax lọc sản phẩm theo loại
+            // ========================
+                   $("#LoaiFilterNav").on("click", "a", function (e) {
+                        e.preventDefault();
+
+                        $("#LoaiFilterNav a").removeClass("active");
+                        $(this).addClass("active");
+
+                        var madm = $(this).data("madm");
+
+                        $.get("/Home/LocTheoLoai", { madm: madm })
+                            .done(function (res) {
+                                $("#SanPhamList").html(res);
+                            })
+                            .fail(function () {
+                                alert("Lỗi khi tải sản phẩm. Vui lòng thử lại.");
+                            });
+                    });
+
+
+            // ========================
+            // Ajax tìm kiếm sản phẩm (input + gợi ý)
+            // ========================
+            $("#searchForm").on("submit", function (e) {
+                e.preventDefault(); // chặn reload trang
+
+                var keyword = $("#searchKeyword").val();
+
+                $.get("/Home/SearchAjax", { keyword: keyword })
+                    .done(function (res) {
+                        $("#SanPhamList").html(res);
+                    })
+                    .fail(function () {
+                        alert("Lỗi khi tìm kiếm sản phẩm!");
+                    });
+            });
+
+            // Gợi ý keyword khi gõ
+            $("#searchKeyword").on("keyup", function () {
+                var keyword = $(this).val();
+
+                if (keyword.length < 1) {
+                    $("#suggestions").empty();
+                    return;
+                }
+
+                $.get("/Home/GetKeywords", { keyword: keyword })
+                    .done(function (data) {
+                        var suggestions = $("#suggestions");
+                        suggestions.empty();
+                        $.each(data, function (i, item) {
+                            suggestions.append('<li class="list-group-item suggestion-item">' + item + '</li>');
+                        });
+                    });
+            });
+
+            // Click vào gợi ý → fill vào input và search
+            $(document).on("click", ".suggestion-item", function () {
+                var text = $(this).text();
+                $("#searchKeyword").val(text);
+                $("#searchForm").submit();
+                $("#suggestions").empty();
+            });
+
+            // ========================
+            // 🔥 Ajax lọc sản phẩm khi click Hot Keywords
+            // (Đã thêm mới)
+            // ========================
+            $(document).on("click", ".keyword-link", function (e) {
+                e.preventDefault();
+                var keyword = $(this).data("keyword");
+
+                $.get("/Home/SearchAjax", { keyword: keyword })
+                    .done(function (res) {
+                        $("#SanPhamList").html(res);
+                    })
+                    .fail(function () {
+                        alert("Lỗi khi tìm kiếm sản phẩm theo hot keyword!");
+                    });
+            });
+
+        $(function() {
+            var maNguoiDung = @currentUserId;
+            if (maNguoiDung > 0) {
+                $("#daXemContainer").load("/SanPhamDaXem/Index?maNguoiDung=" + maNguoiDung);
+            }
+        });
+         // ========================
+            // 🔥 Nút Xem Thêm
+            // ========================
+           function initXemThem() {
+            const btn = document.getElementById("btnXemThem");
+            if (btn) {
+                btn.addEventListener("click", function () {
+                    document.querySelectorAll(".hidden-product").forEach(el => el.classList.remove("d-none"));
+                    btn.style.display = "none";
+                });
+            }
+        }
+
+        // Gọi khi load trang
+        initXemThem();
+
+        // Gọi lại khi load partial view AJAX
+        $(document).ajaxComplete(function () {
+            initXemThem();
+        });
+
+
+
+
+        });
+    </script>
+}
+
+
+

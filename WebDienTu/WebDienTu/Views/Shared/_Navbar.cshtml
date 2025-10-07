@@ -1,0 +1,138 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@using System.Security.Claims
+@using WebDienTu.Models
+@using Microsoft.EntityFrameworkCore
+
+@{
+    var user = HttpContextAccessor.HttpContext.User;
+    var isAuthenticated = user.Identity.IsAuthenticated;
+    int userId = 0;
+    string userName = null;
+    bool isAdmin = false;
+
+    if (isAuthenticated)
+    {
+        // Lấy claim đúng với AccountController
+        var idClaim = user.FindFirstValue("UserId");
+        int.TryParse(idClaim, out userId);
+        userName = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+
+        // Kiểm tra role admin
+        isAdmin = user.IsInRole("Admin");
+    }
+
+    int gioHangCount = 0;
+    if (userId > 0)
+    {
+        var _context = (DienTuStoreContext)HttpContextAccessor.HttpContext.RequestServices.GetService(typeof(DienTuStoreContext));
+        gioHangCount = _context.GioHangTams
+                               .Where(g => g.MaNguoiDung == userId)
+                               .Sum(g => g.SoLuong);
+    }
+}
+<nav class="navbar navbar-expand-lg shadow-sm fixed-top theme-navbar">
+
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">WebĐiệnTử</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUser" aria-controls="navbarUser" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarUser" >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Trang Chủ</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="GioiThieu">Giới thiệu</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="DonHang" asp-action="LichSu">Lịch sử</a>
+                </li>
+            </ul>
+
+            <!-- Thanh tìm kiếm  -->
+          <form id="searchForm" class="d-flex me-auto" asp-controller="SanPham" asp-action="Search" method="get">
+
+                <div class="input-group" style="width: 300px;">
+                    <input type="text" id="searchKeyword" class="form-control rounded-start" name="keyword"
+                           placeholder="Tìm sản phẩm..." aria-label="Tìm sản phẩm"
+                           style="border-right: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                    <button class="btn btn-primary rounded-end" type="submit" style="box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            <!-- Gợi ý keyword -->
+            <ul id="suggestions" class="list-group position-absolute" style="z-index: 1000; width: 300px;"></ul>
+
+            <ul class ="navbar-nav">
+                <!-- Nút chuyển sáng / tối -->
+                <li class="nav-item">
+                    <button id="themeToggle" class="btn btn-outline-secondary ms-2" aria-label="Đổi giao diện">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+          
+
+            <ul class="navbar-nav">
+                @if (!isAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">
+                            <i class="fa-solid fa-right-to-bracket me-1"></i> Đăng nhập
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Register">
+                            <i class="fa-solid fa-user-plus me-1"></i> Đăng ký
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" asp-controller="GioHang" asp-action="Index">
+                            <i class="fa-solid fa-cart-shopping me-1"></i> Giỏ hàng
+                            @if (gioHangCount > 0)
+                            {
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    @gioHangCount
+                                    <span class="visually-hidden">items in cart</span>
+                                </span>
+                            }
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Profile">
+                            <i class="fa-solid fa-user me-1"></i> Xin chào, @userName
+                        </a>
+                    </li>
+
+                    @* Nút Admin chỉ hiển thị nếu là admin *@
+                    @if (isAdmin)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link admin" asp-area="Admin" asp-controller="AdminHome" asp-action="Index">
+                                <i class="fa-solid fa-user-shield me-1"></i> Chuyển sang Admin
+                            </a>
+                        </li>
+                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link logout" asp-controller="Account" asp-action="Logout">
+                            <i class="fa-solid fa-right-from-bracket me-1"></i> Đăng xuất
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,58 @@
+﻿@model WebDienTu.Models.SanPham
+@{
+    ViewData["Title"] = "Thanh toán sản phẩm";
+}
+
+<div class="container mt-5">
+    <h3 class="mb-3">Xác nhận mua hàng</h3>
+
+    <div class="card shadow-sm p-3">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="@Model.HinhAnh" alt="@Model.TenSanPham" class="img-fluid rounded" />
+            </div>
+            <div class="col-md-8">
+                <h5>@Model.TenSanPham</h5>
+                <p class="text-muted">@Model.MoTa</p>
+
+                <!-- Giá gốc và giá giảm -->
+                <p>
+                    <span class="text-muted text-decoration-line-through">
+                        Giá gốc: @Model.Gia.ToString("N0") VNĐ
+                    </span>
+                </p>
+                <p class="fw-bold text-danger">
+                    Giá bán: @((Model.GiaBan ?? Model.Gia).ToString("N0")) VNĐ
+                </p>
+
+                <!-- Thêm các thông tin khác -->
+                <ul class="list-unstyled">
+                    <li><strong>Thương hiệu:</strong> @Model.ThuongHieu</li>
+                    <li><strong>Xuất xứ:</strong> @Model.XuatXu</li>
+                    <li><strong>Bảo hành:</strong> @Model.BaoHanh</li>
+                    <li><strong>Loại:</strong> @Model.Loai</li>
+                    <li><strong>Số lượng tồn:</strong> @Model.SoLuongTon</li>
+                    <li><strong>Ngày thêm:</strong> @(Model.NgayThem?.ToString("dd/MM/yyyy"))</li>
+                </ul>
+
+                <!-- Form đặt hàng -->
+                <form asp-action="ThanhToan" method="post">
+                    <input type="hidden" name="sanPhamId" value="@Model.MaSanPham" />
+
+                    <div class="mb-3">
+                        <label for="soLuong" class="form-label">Số lượng</label>
+                        <input type="number" name="soLuong" id="soLuong" class="form-control"
+                               value="1" min="1" max="@Model.SoLuongTon" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa-solid fa-check me-1"></i> Xác nhận thanh toán
+                    </button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary ms-2">
+                        <i class="fa-solid fa-arrow-left"></i> Quay lại
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

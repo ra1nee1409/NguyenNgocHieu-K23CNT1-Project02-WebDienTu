@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WebDienTu.Models.DonHang>
+
+@{
+    ViewData["Title"] = "Lịch sử mua hàng";
+}
+<link href="~/css/LichSuMuaHang.css" rel="stylesheet" />
+<h2 class="mb-4">Lịch sử mua hàng</h2>
+
+@if (TempData["Warning"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @TempData["Warning"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <p>Bạn chưa có đơn hàng nào.</p>
+}
+else
+{
+    <table class="table table-hover align-middle table-theme">
+        <thead class="table-primary">
+            <tr>
+                <th>Mã Đơn</th>
+                <th>Ngày mua</th>
+                <th>Trạng thái</th>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dh in Model)
+            {
+                foreach (var ct in dh.ChiTietDonHangs)
+                {
+                    <tr>
+                        <td>#@dh.MaDonHang</td>
+                        <td>@dh.NgayDatHang?.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            @if (dh.TrangThai == true)
+                            {
+                                <span class="badge bg-success">Đã xác nhận</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">Chờ xác nhận</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="@ct.MaSanPhamNavigation.HinhAnh"
+                                     alt="@ct.MaSanPhamNavigation.TenSanPham"
+                                     class="rounded me-2"
+                                     style="width:60px; height:60px; object-fit:cover;" />
+                                <span>@ct.MaSanPhamNavigation.TenSanPham</span>
+                            </div>
+                        </td>
+                        <td>@ct.DonGia.ToString("N0") VNĐ</td>
+                        <td>@ct.SoLuong</td>
+                        <td>@($"{(ct.DonGia * ct.SoLuong):N0} VNĐ")</td>
+                        <td>
+                            @if (dh.TrangThai == false)
+                            {
+                                <form asp-action="HuyDon" asp-controller="DonHang" method="post"
+                                      onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');">
+                                    <input type="hidden" name="id" value="@dh.MaDonHang" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-ban me-1"></i> Hủy
+                                    </button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+                <!-- Tổng tiền mỗi đơn -->
+                <tr class="table-light fw-bold">
+                    <td colspan="7" class="text-end">Tổng đơn #@dh.MaDonHang:</td>
+                    <td>@dh.TongTien.ToString("N0") VNĐ</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

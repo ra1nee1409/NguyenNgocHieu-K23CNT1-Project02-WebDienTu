@@ -1,0 +1,127 @@
+﻿@model IEnumerable<WebDienTu.Models.GioHangTam>
+
+@{
+    ViewData["Title"] = "Giỏ hàng";
+    var tongTien = Model.Sum(item => (item.MaSanPhamNavigation.GiaBan ?? item.MaSanPhamNavigation.Gia) * item.SoLuong);
+}
+<link href="~/css/GioHang.css" rel="stylesheet" />
+<div class="container mt-4">
+    <h2 class="mb-4"><i class="fa-solid fa-cart-shopping me-2"></i> Giỏ hàng của bạn</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            <i class="fa-solid fa-circle-info me-2"></i> Giỏ hàng trống.
+            <a asp-controller="Home" asp-action="Index" class="alert-link">Tiếp tục mua sắm</a>
+        </div>
+    }
+    else
+    {
+        <!-- Thống kê -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm border-info">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Tổng sản phẩm</h5>
+                        <p class="card-text fs-4 fw-bold">@ViewBag.TongSanPham</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-warning">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-warning">Chưa thanh toán</h5>
+                        <p class="card-text fs-4 fw-bold">@ViewBag.ChuaThanhToan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-success">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">Đã thanh toán</h5>
+                        <p class="card-text fs-4 fw-bold">@ViewBag.DaThanhToan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng giỏ hàng -->
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle text-center table-cart">
+                <thead>
+                    <tr>
+                        <th>Ảnh</th>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var gia = item.MaSanPhamNavigation.GiaBan ?? item.MaSanPhamNavigation.Gia;
+                        var thanhTien = gia * item.SoLuong;
+
+                        <tr>
+                            <td style="width:100px">
+                                <img src="@item.MaSanPhamNavigation.HinhAnh" alt="@item.MaSanPhamNavigation.TenSanPham"
+                                     class="img-fluid rounded" style="max-height:80px; object-fit:cover;" />
+                            </td>
+                            <td class="text-start">
+                                <strong>@item.MaSanPhamNavigation.TenSanPham</strong>
+                            </td>
+                            <td>@gia.ToString("N0") VNĐ</td>
+                            <td>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <form asp-action="UpdateQuantity" method="post" class="d-inline">
+                                        <input type="hidden" name="sanPhamId" value="@item.MaSanPham" />
+                                        <input type="hidden" name="change" value="-1" />
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary">-</button>
+                                    </form>
+                                    <span class="mx-2">@item.SoLuong</span>
+                                    <form asp-action="UpdateQuantity" method="post" class="d-inline">
+                                        <input type="hidden" name="sanPhamId" value="@item.MaSanPham" />
+                                        <input type="hidden" name="change" value="1" />
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+                                    </form>
+                                </div>
+                            </td>
+                            <td class="fw-bold text-primary">@thanhTien.ToString("N0") VNĐ</td>
+                            <td>
+                                <a asp-action="Remove" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                                    <i class="fa-solid fa-trash"></i> Xóa
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end fw-bold">Tổng cộng:</td>
+                        <td colspan="2" class="fw-bold text-success fs-5">@tongTien.ToString("N0") VNĐ</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between mt-3">
+    	@*Quay lại trang chủ để thêm sản phẩm khác hoặc tiến hành thanh toán. *@
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-arrow-left me-1"></i> Tiếp tục mua sắm
+            </a>
+
+           @*  Khi bấm Thanh toán, toàn bộ sản phẩm trong giỏ sẽ được đưa vào bảng Đơn hàng + Chi tiết đơn hàng.
+            Giỏ hàng sẽ được làm trống.
+            Admin có thể xác nhận đơn hàng bên phía quản trị. *@
+            <form asp-controller="GioHang" asp-action="ThanhToanGioHang" method="post" asp-antiforgery="true">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-credit-card"></i> Thanh toán
+                </button>
+            </form>
+
+        </div>
+    }
+</div>
+

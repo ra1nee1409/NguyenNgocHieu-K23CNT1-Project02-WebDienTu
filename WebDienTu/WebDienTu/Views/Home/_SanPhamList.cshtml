@@ -1,0 +1,124 @@
+﻿@model IEnumerable<WebDienTu.Models.SanPham>
+
+@{
+    var index = 0;          // Đếm sản phẩm
+    var colPerRow = 5;      // Số cột mỗi hàng
+    var visibleCount = colPerRow * 2; // Hiển thị 2 hàng đầu tiên
+}
+
+<link href="~/css/_SanPhamList.css" rel="stylesheet" />
+
+@if (Model == null || !Model.Any())
+{
+    <div class="col-12">
+        <div class="alert alert-warning text-center my-4">
+            <i class="fa-solid fa-circle-exclamation me-2"></i>
+            Không có sản phẩm phù hợp.
+        </div>
+    </div>
+}
+else
+{
+    <div id="sanpham-container" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+        @foreach (var item in Model)
+        {
+            var delay = (index / colPerRow) * 200;
+            var hiddenClass = index >= visibleCount ? "d-none hidden-product" : "";
+
+            <div class="col @hiddenClass" data-aos="fade-up" data-aos-delay="@delay">
+                <div class="card h-100 shadow-sm border-0 rounded-3 position-relative">
+
+                    <!-- Badge giảm giá -->
+                    @if (item.GiaBan.HasValue && item.GiaBan.Value < item.Gia)
+                    {
+                        <span class="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 rounded-bottom small">
+                            <i class="fa-solid fa-tag me-1"></i>
+                            Giảm @((1 - item.GiaBan.Value / item.Gia) * 100).ToString("0")%
+                        </span>
+                    }
+
+                    <!-- Ảnh sản phẩm -->
+                    <div class="position-relative">
+                        <img src="@item.HinhAnh" class="card-img-top" alt="@item.TenSanPham"
+                             style="height:200px; object-fit:cover; border-radius: .5rem .5rem 0 0;" />
+
+                        <!-- Overlay nút hành động -->
+                        <div class="card-overlay d-flex justify-content-center align-items-center">
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@item.MaSanPham"
+                               class="btn-action btn-view mx-1">
+                                <i class="fa-solid fa-eye me-1"></i> Xem
+                            </a>
+                            <a asp-controller="DonHang" asp-action="ThanhToan" asp-route-id="@item.MaSanPham"
+                               class="btn-action btn-buy mx-1">
+                                <i class="fa-solid fa-cart-shopping me-1"></i> Mua
+                            </a>
+                            <form asp-controller="GioHang" asp-action="AddToCart" method="post" class="d-inline mx-1">
+                                <input type="hidden" name="sanPhamId" value="@item.MaSanPham" />
+                                <input type="hidden" name="quantity" value="1" />
+                                <button type="submit" class="btn-action btn-cart">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Thông tin -->
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="card-title text-card-title text-truncate" title="@item.TenSanPham">@item.TenSanPham</h6>
+                        <p class="card-text text-card-desc small text-truncate" title="@item.MoTa">@item.MoTa</p>
+
+                        <!-- Giá + hành động -->
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold text-card-price">
+                                    @((item.GiaBan ?? item.Gia).ToString("N0")) VNĐ
+                                </span>
+                            </div>
+
+                            <!-- Hiển thị sao -->
+                            @{
+                                var danhGiaList = item.DanhGia?.Cast<WebDienTu.Models.DanhGia>().ToList();
+                            }
+                            @if (danhGiaList != null && danhGiaList.Any())
+                            {
+                                <div class="mb-2 ms-0 text-card-muted">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        if (i <= Math.Round(danhGiaList.Average(d => d.SoSao ?? 0)))
+                                        {
+                                            <i class="fa-solid fa-star text-warning me-1"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa-regular fa-star text-warning me-1"></i>
+                                        }
+                                    }
+                                    <small class="text-card-muted">(@danhGiaList.Count())</small>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="mb-2 text-card-muted small ms-1">
+                                    Chưa có đánh giá
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            index++;
+        }
+    </div>
+
+    <!-- Nút xem thêm -->
+    @if (Model.Count() > visibleCount)
+    {
+        <div class="text-center mt-4">
+            <button id="btnXemThem" class="btn btn-outline-primary px-4">
+                Xem thêm
+            </button>
+        </div>
+    }
+}
+
+
