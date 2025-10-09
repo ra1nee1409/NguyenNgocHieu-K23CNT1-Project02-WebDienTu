@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eNLHu0a9WqY=",
+  "dgSpecHash": "9xrEYcsnWrk=",
   "success": true,
-  "projectFilePath": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\WebDienTu.csproj",
+  "projectFilePath": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\WebDienTu.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sthie\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\sthie\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
