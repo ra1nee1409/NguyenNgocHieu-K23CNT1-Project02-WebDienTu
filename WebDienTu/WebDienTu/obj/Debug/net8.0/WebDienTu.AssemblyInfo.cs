@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebDienTu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8c83cdcf0c9205059bdb2b643131139a5c0d788")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb94111ae4366c898840ff5ddfe396206e60421b")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebDienTu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebDienTu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
