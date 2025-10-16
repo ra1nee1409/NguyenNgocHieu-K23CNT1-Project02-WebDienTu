@@ -17,5 +17,5 @@ public partial class NguoiDungGiamGia
 
     public virtual GiamGia MaKhuyenMaiNavigation { get; set; } = null!;
 
-    public virtual QuanTriVien MaNguoiDungNavigation { get; set; } = null!;
+    public virtual QuanTriVien? MaNguoiDungNavigation { get; set; }
 }

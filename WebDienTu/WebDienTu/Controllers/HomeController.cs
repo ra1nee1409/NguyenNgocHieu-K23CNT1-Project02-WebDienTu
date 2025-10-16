@@ -27,7 +27,7 @@ namespace WebDienTu.Controllers
                     .SelectMany(sp => new[] { sp.TenSanPham, sp.ThuongHieu, sp.Loai })
                     .Where(k => !string.IsNullOrEmpty(k))
                     .Distinct()
-                    .Take(20)
+                    .Take(20 )
                     .ToList();
             ViewBag.HotKeywords = hotKeywords;
 
@@ -123,7 +123,7 @@ namespace WebDienTu.Controllers
 
             if (sp == null) return NotFound();
 
-
+           
             // ✅ Tính giá bán hiện tại (giống logic Index)
             if (!sp.GiaBan.HasValue || sp.GiaBan == 0)
             {
@@ -177,7 +177,7 @@ namespace WebDienTu.Controllers
                 await _context.SaveChangesAsync();
             }
 
-
+           
 
             // 🔹 Note: Khi view Details, bạn có thể dùng sp.GiaTriThuocTinhs để hiển thị
             // Ví dụ trong view:
@@ -371,7 +371,7 @@ namespace WebDienTu.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+       
         // Trang giới thiệu
         public IActionResult GioiThieu()
         {

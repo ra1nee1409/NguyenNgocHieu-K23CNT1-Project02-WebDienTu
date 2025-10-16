@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\models\\nguoidunggiamgia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\models\\nguoidunggiamgia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\areas\\admin\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\areas\\admin\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\wwwroot\\cssadmin\\navbaradmin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\wwwroot\\cssadmin\\navbaradmin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\areas\\admin\\views\\shared\\_navadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\areas\\admin\\views\\shared\\_navadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\models\\dientustorecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\models\\dientustorecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|c:\\project 2\\nguyenngochieu-k23cnt1-project02-webdientu\\nguyenngochieu-k23cnt1-project02-webdientu\\webdientu\\webdientu\\models\\donhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24A9F4E4-9F8A-496C-82CE-3E5CAA709868}|WebDienTu\\WebDienTu.csproj|solutionrelative:webdientu\\models\\donhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,100 +23,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NguoiDungGiamGia.cs",
-              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\NguoiDungGiamGia.cs",
-              "RelativeDocumentMoniker": "WebDienTu\\Models\\NguoiDungGiamGia.cs",
-              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\NguoiDungGiamGia.cs",
-              "RelativeToolTip": "WebDienTu\\Models\\NguoiDungGiamGia.cs",
+              "Title": "DonHang.cs",
+              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\DonHang.cs",
+              "RelativeDocumentMoniker": "WebDienTu\\Models\\DonHang.cs",
+              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\DonHang.cs",
+              "RelativeToolTip": "WebDienTu\\Models\\DonHang.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T10:24:24.176Z",
+              "WhenOpened": "2025-10-16T12:44:35.738Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_LayoutAdmin.cshtml",
-              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebDienTu\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "RelativeToolTip": "WebDienTu\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAkwIcAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-15T07:51:36.54Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "navbarAdmin.css",
-              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\wwwroot\\cssAdmin\\navbarAdmin.css",
-              "RelativeDocumentMoniker": "WebDienTu\\wwwroot\\cssAdmin\\navbarAdmin.css",
-              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\wwwroot\\cssAdmin\\navbarAdmin.css",
-              "RelativeToolTip": "WebDienTu\\wwwroot\\cssAdmin\\navbarAdmin.css",
-              "ViewState": "AgIAAHAAAAAAAAAAAAAcwKAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-15T07:50:34.193Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_NavAdmin.cshtml",
-              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Areas\\Admin\\Views\\Shared\\_NavAdmin.cshtml",
-              "RelativeDocumentMoniker": "WebDienTu\\Areas\\Admin\\Views\\Shared\\_NavAdmin.cshtml",
-              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Areas\\Admin\\Views\\Shared\\_NavAdmin.cshtml",
-              "RelativeToolTip": "WebDienTu\\Areas\\Admin\\Views\\Shared\\_NavAdmin.cshtml",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAkwE4AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-15T07:49:11.102Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\appsettings.json",
-              "RelativeDocumentMoniker": "WebDienTu\\appsettings.json",
-              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\appsettings.json",
-              "RelativeToolTip": "WebDienTu\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-15T07:45:42.726Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "WebDienTu\\Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "WebDienTu\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-15T07:45:40.719Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "WebDienTu\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "WebDienTu\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-15T07:45:39.031Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DienTuStoreContext.cs",
-              "DocumentMoniker": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\DienTuStoreContext.cs",
-              "RelativeDocumentMoniker": "WebDienTu\\Models\\DienTuStoreContext.cs",
-              "ToolTip": "C:\\Project 2\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\NguyenNgocHieu-K23CNT1-Project02-WebDienTu\\WebDienTu\\WebDienTu\\Models\\DienTuStoreContext.cs",
-              "RelativeToolTip": "WebDienTu\\Models\\DienTuStoreContext.cs",
-              "ViewState": "AgIAACkBAAAAAAAAAAAmwDAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T07:44:14.807Z"
             }
           ]
         }
